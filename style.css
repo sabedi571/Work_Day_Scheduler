@@ -6,17 +6,20 @@ body {
 
   .input-group-text {
       width: 100px;
-      background-color: rgb(221, 203, 97);
+      background-color: rgb(119, 119, 116);
+      color: azure;
   }
 
   .btn {
       width: 100px;
-      background-color: rgb(221, 203, 97);
+      background-color: rgb(119, 119, 116);
+      color: azure;
   }
 
   .form-control {
       width: 500px;
-      background-color: azure;
+      background-color: rgb(255, 255, 255);
+      height: 50px;
   }
   
   textarea{
@@ -31,9 +34,9 @@ body {
   .jumbotron {
     text-align: center;
     background-color: transparent;
-    color: black;
+    color: rgb(194, 62, 62);
     border-radius: 0;
-    border-bottom: 10px solid rgb(212, 137, 137);
+    border-bottom: 10px solid rgb(238, 222, 129);
   }
   
   .description{
