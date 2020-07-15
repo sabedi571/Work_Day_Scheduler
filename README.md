@@ -2,6 +2,12 @@
 save events for each hour of your day.
 https://sabedi571.github.io/Work_Day_Scheduler/.
 
+I created this day planner that saves your schedule through the day to the local storage.
+I used getItem method to retrieve the data from the local storage whenever the page is refreshed.
+I used .text(moment().format() for time and date updates.
+i also used if function to differentiate the color in time blocks.
+
+
 GIVEN I am using a daily planner to create a schedule
 WHEN I open the planner
 THEN the current day is displayed at the top of the calendar
