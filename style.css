@@ -4,6 +4,8 @@ body {
     line-height: 1;
   }
 
+  
+
   .input-group-text {
       width: 100px;
       background-color: rgb(119, 119, 116);
@@ -61,7 +63,7 @@ body {
   }
   
   .past {
-    background-color: #d3d3d3;
+    background-color: #706c6c;
     color: white;
   }
   

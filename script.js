@@ -1,64 +1,53 @@
-var todaysdate = moment().format("MMM Do YYYY");
+(function($){
+    $( document ).ready(function() {
+        $("#currentDay").text(moment().format("dddd, MMMM Do"));
+    $("#currentTime").text(moment().format("LTS"));
 
-$("#currentDay").append(todaysdate);
+    $(".btn").on("click", function() {
+        var time = $(this).parent().attr("id");
+        var textcontent = $(this).siblings(".description").val();
+        localStorage.setItem(time, textcontent);
+        console.log(time, textcontent);
+    
+    });
 
-var currentimes = moment().format('LTS');
+    function hourUpdater() {
 
-$("#currenttime").append(currentimes);
+        var currenthour = moment().hours();
 
-var timeofday = ["8","9","10","11","12","13","14","15","16","17"]
-updatetime();
+        $(".time-block").each(function() {
+            var blockhour = parseInt($(this).attr("id").split("-")[1]);
 
-function updatetime() {
-    var currenttime = moment().format("H");
-    for(var i=0; i < timeofday.length; i++ ) {
-        
-        if (parseInt(timeofday[i]) > currenttime) {
-            $("#" + timeofday[i]).attr("style", "background-color: rgb(238, 222, 129)");
-        }
-
-        else if (parseInt(timeofday[i]) < currenttime) {
-            $("#" + timeofday[i]).attr("style", "background-color: rgb(226, 131, 115)");
-        }
-
-        else if (parseInt(timeofday[i]) == currenttime) {
-            $("#" + timeofday[i]).attr("style", "background-color: rgb(119, 209, 134)");
-        }
-
+            if (blockhour < currenthour) {
+                $(this).addClass("past");
+            }
+            else if (blockhour === currenthour) {
+                $(this).removeClass("past");
+                $(this).addClass("present");
+            }
+            else {
+                $(this).removeClass("past");
+                $(this).removeClass("present");
+                $(this).addClass("future");
+            }
+        });
     }
 
-}
+    hourUpdater();
 
-$(".btn").on("click", function() {
-
-    var time = $(this).parent().attr("id");
-    var textContent = $("input").val().trim();
-
-    localStorage.setItem(time, textContent);
-    console.log(time, textContent);
+    var interval = setInterval(hourUpdater, 15000);
 
     
 
-
-
-});
-
-$("#8am").children("input").val(localstorage.getitem("8am"));
-$("#9am").children("input").val(localstorage.getitem("9am"));
-$("#10am").children("input").val(localstorage.getitem("10am"));
-$("#11am").children("input").val(localstorage.getitem("11am"));
-$("#12pm").children("input").val(localstorage.getitem("12pm"));
-$("#1pm").children("input").val(localstorage.getitem("1pm"));
-$("#2pm").children("input").val(localstorage.getitem("2pm"));
-$("#3pm").children("input").val(localstorage.getitem("3pm"));
-$("#4pm").children("input").val(localstorage.getitem("4pm"));
-$("#5pm").children("input").val(localstorage.getitem("5pm"));
-
-var input = document.getElementById("8");
-input.addEventListener("keyup", function(event) {
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("button8").click();
-  }
-});
+    $("#hour-9 .description").val(localStorage.getItem("hour-9"));
+    $("#hour-10 .description").val(localStorage.getItem("hour-10"));
+    $("#hour-11 .description").val(localStorage.getItem("hour-11"));
+    $("#hour-12 .description").val(localStorage.getItem("hour-12"));
+    $("#hour-13 .description").val(localStorage.getItem("hour-13"));
+    $("#hour-14 .description").val(localStorage.getItem("hour-14"));
+    $("#hour-15 .description").val(localStorage.getItem("hour-15"));
+    $("#hour-16 .description").val(localStorage.getItem("hour-16"));
+    $("#hour-17 .description").val(localStorage.getItem("hour-17"));
+    });
+})(jQuery)
 
